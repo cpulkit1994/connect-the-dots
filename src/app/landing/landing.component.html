@@ -1,0 +1,65 @@
+<div class="landing-comp root-div bg-grey">
+
+  <header class="bg-primary bold-xxl text-color-white header-cont">
+    Welcome To Game World
+  </header>
+
+  <div class="content-div">
+
+    <div class="form-cont" [formGroup]="gameForm">
+
+      <div class="player-cont">
+
+        <div class="player-name-txt bold-xl text-color-white">
+          Player 1 Name
+        </div>
+
+        <input matInput
+          type="text"
+          formControlName="player1"
+          class="input-cont bold-xl"
+          name="input-text"
+          autocomplete="off">
+      </div>
+
+      <div class="player-cont">
+
+        <div class="player-name-txt bold-xl text-color-white">
+          Player 2 Name
+        </div>
+
+        <input matInput
+          type="text"
+          formControlName="player2"
+          class="input-cont bold-xl"
+          name="input-text"
+          autocomplete="off">
+      </div>
+
+      <div class="drop-down-cont" *ngIf="boardSize.length">
+        <mat-form-field>
+          <mat-label class="bold-xl">
+            Board Size
+          </mat-label>
+          <mat-select
+            class="bold-xl"
+            formControlName="boardSizeDetail">
+            <mat-option *ngFor="let board of boardSize" [value]="board"
+              class="bold-xl">
+              {{ board.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="button-cont">
+      <button class="btn bold-lg" (click)="onStartClick()">
+        Start Game
+      </button>
+    </div>
+
+  </div>
+
+</div>

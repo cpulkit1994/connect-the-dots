@@ -1,0 +1,32 @@
+<div class="game-comp root-div">
+
+  <mat-card class="game-board-cont">
+
+    <div class="game-container bg-primary">
+      <div class="container">
+        <div class="row-list" *ngFor="let row of rowList; let j = index">
+          <div class="round" [ngClass]="{'red' :  firstPlayerSelections.includes((j+1) + '' + (i+1)),
+            'yellow' : secondPlayerSelections.includes((j+1) + '' + (i+1)),
+            'green-border' : winningSelection.includes((j+1) + '' + (i+1))}"
+            *ngFor="let col of roundList; let i = index" (click)="onPlayerMove(col)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </mat-card>
+
+  <div class="result-cont" *ngIf="gameResult !== GAME_RESULT.PLAYING">
+    <div class="text-cont bold-xxl">
+      {{gameResult === GAME_RESULT.DRAW ? 'You Both are equally good, lets restart again' :
+        (gameResult === GAME_RESULT.PLAYER_1_WON ? gameDetail.firstPlayerName + 'won the match'
+        : gameDetail.secondPlayerName + 'won the match')}}
+    </div>
+    <div class="button-cont">
+      <button class="btn bold-lg" (click)="onRestartGame()">
+        Restart Game
+      </button>
+    </div>
+  </div>
+
+</div>
